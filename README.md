@@ -35,3 +35,6 @@ Just put it on yourself.
 * example 句子範例
 * group (如 否定相關)
 * situational (包含情況語氣，特殊含義等)
+
+####
+This project using Spring boot v1.3.0
