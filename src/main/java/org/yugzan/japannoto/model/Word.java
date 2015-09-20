@@ -1,13 +1,18 @@
 package org.yugzan.japannoto.model;
 
+import java.util.Arrays;
+
+import org.springframework.data.mongodb.core.mapping.Document;
+
 /**
  * @author  yugzan
  * @date    2015年8月30日
  * @project japanno-to
  */
-public class Word {
+@Document(collection = "words" )
+public class Word extends AbstractDocument{
 
-	private String id;
+
 	/**
 	 * roma 指單字羅馬拼音 ex.(hikiukeru)
 	 * */
@@ -47,13 +52,6 @@ public class Word {
 	
 	private String situational;
 
-	public String getId() {
-		return id;
-	}
-
-	public void setId(String id) {
-		this.id = id;
-	}
 
 	public String getRoma() {
 		return roma;
@@ -157,6 +155,16 @@ public class Word {
 
 	public void setSituational(String situational) {
 		this.situational = situational;
+	}
+
+	@Override
+	public String toString() {
+		return "Word [roma=" + roma + ", word=" + word + ", hiragana=" + hiragana
+				+ ", katakana=" + katakana + ", mean=" + mean + ", english=" + english
+				+ ", partOfSpeech=" + partOfSpeech + ", tag=" + Arrays.toString(tag)
+				+ ", formation=" + formation + ", relateWord=" + relateWord + ", group="
+				+ Arrays.toString(group) + ", example=" + Arrays.toString(example)
+				+ ", situational=" + situational + "]";
 	}
 	
 

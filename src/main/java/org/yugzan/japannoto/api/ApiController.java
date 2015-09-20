@@ -10,6 +10,8 @@ public abstract class ApiController {
 	
 	public static final String WORDS_URL = API_PATH + "/words";
 	
+	public static final String WORD_ID_URL = WORDS_URL + "/{id}";
+	
 	public static final String GRAMMERS_URL = API_PATH + "/grammars";
 }
 

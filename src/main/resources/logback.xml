@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration scan="true" scanPeriod="30 seconds">
+
+    <!--
+    This file is the default logback configuration for Spring Boot. To use the same
+    defaults and add custom logger levels you can copy this file and add additional
+    overrides, e.g:
+    <include resource="org/springframework/boot/logging/logback/base.xml"/>
+    <logger name="org.springframework.web" level="DEBUG"/>
+    ...
+    -->
+    <property name="LOG_FILE" value="${LOG_FILE:-${LOG_PATH:-/tmp}/japannoto.log}"/>
+
+    <include resource="org/springframework/boot/logging/logback/base.xml"/>
+
+    <appender name="FILE"
+              class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOG_FILE}</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!-- daily rollover -->
+            <fileNamePattern>${LOG_FILE}.%d{yyyy-MM-dd}.%i
+            </fileNamePattern>
+            <timeBasedFileNamingAndTriggeringPolicy
+                    class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                <!-- or whenever the file size reaches <maxFileSize>-->
+                <maxFileSize>250MB</maxFileSize>
+            </timeBasedFileNamingAndTriggeringPolicy>
+            <!-- how many days to keep historic logs -->
+            <maxHistory>7</maxHistory>
+            <!-- If set to true, archive removal will be executed on appender start
+                    up. By default this property is set to false. -->
+            <cleanHistoryOnStart>false</cleanHistoryOnStart>
+        </rollingPolicy>
+        <encoder>
+            <pattern>${FILE_LOG_PATTERN}</pattern>
+        </encoder>
+    </appender>
+
+    <logger name="org.yugzan" level="DEBUG"/>
+    <logger name="org.springframework" level="ERROR"/>
+    <logger name="org.eclipse.jetty" level="ERROR"/>
+
+</configuration>
