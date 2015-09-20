@@ -50,7 +50,7 @@ public class Link implements Comparable<Link> {
 
 	@Override
 	public String toString() {
-		return "ResourceLinks [rel=" + rel + ", href=" + href + "]";
+		return "Link [rel=" + rel + ", href=" + href + "]";
 	}
 
 	/*
