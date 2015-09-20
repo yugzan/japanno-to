@@ -36,7 +36,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
 		.logout()
 		.and()
 		.authorizeRequests()
-		.antMatchers("/index.html", "/home.html", "/login.html","/access", "/logout").permitAll() // for anonymous user
+		.antMatchers("/**").permitAll() // for anonymous user
 		.anyRequest().authenticated().and().csrf().disable();
 	}
 
