@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.yugzan.japannoto.model.ModelMapper;
 import org.yugzan.japannoto.model.Word;
 import org.yugzan.japannoto.repo.WordRepository;
 
@@ -27,8 +28,12 @@ public class WordResourceService implements ResourceService<Word>{
 
 	@Override
 	public Optional<Word> update(BigInteger id, Word word) {
-//	TODO
-		return null;
+		Optional<Word> fromdb = get(id);
+		
+		return (fromdb.isPresent())?
+				Optional.of(repo.save(ModelMapper.WordToMongoDB(word, fromdb.get())) ):
+				Optional.empty();
+
 	}
 
 
@@ -36,7 +41,11 @@ public class WordResourceService implements ResourceService<Word>{
 	public Optional<List<Word>> list() {
 		return Optional.ofNullable(repo.findAll());
 	}
-
+	
+	public Long count() {
+		return repo.count();
+	}
+	
 
 	@Override
 	public Optional<Word> get(BigInteger id) {

@@ -69,7 +69,7 @@ public class WrodsController extends ApiController {
 	public ResourceCollection<Word> list(HttpServletRequest request) {
 		try{
 			List<Link> links = new ArrayList<>();
-			links.add( new Link().setRel(REL.last).setHref("url:last"));
+			links.add( new Link().setRel(REL.item).setHref(service.count() ));
 			return new ResourceCollection<Word>(service.list().get() , links,request);
 		}catch(Exception e){
 			throw new ResourceNotFoundException(e.getMessage());

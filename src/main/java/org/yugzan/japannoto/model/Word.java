@@ -1,6 +1,7 @@
 package org.yugzan.japannoto.model;
 
 import java.util.Arrays;
+import java.util.Optional;
 
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -66,7 +67,7 @@ public class Word extends AbstractDocument{
 	}
 
 	public void setWord(String word) {
-		this.word = word;
+		this.word = editorCheck(this.word,word);
 	}
 
 	public String getHiragana() {
@@ -166,8 +167,11 @@ public class Word extends AbstractDocument{
 				+ Arrays.toString(group) + ", example=" + Arrays.toString(example)
 				+ ", situational=" + situational + "]";
 	}
-	
-
+	//TODO check data
+	private <T> T editorCheck(T r,T e){
+		Optional<T> edit = Optional.ofNullable(e);
+		return (edit.isPresent())?e:r;
+	}
 
 }
 
