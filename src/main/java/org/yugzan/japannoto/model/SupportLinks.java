@@ -55,8 +55,8 @@ public abstract class SupportLinks {
 	}
 	
 	@JsonProperty("_links")
-	protected List<Link> getLinks() {
-		return (List<Link>) links;
+	protected Collection<Link> getLinks() {
+		return links;
 	}
 	
 	protected void setLinks(Collection<Link> links) {

@@ -14,7 +14,7 @@ public class Link implements Comparable<Link> {
 
 	protected REL rel;
 
-	protected String href;
+	protected Object href;
 
 	public Link() {
 
@@ -24,7 +24,7 @@ public class Link implements Comparable<Link> {
 	 * @param rel
 	 * @param href
 	 */
-	public Link(REL rel, String href) {
+	public Link(REL rel, Object href) {
 		super();
 		this.rel = rel;
 		this.href = href;
@@ -39,11 +39,11 @@ public class Link implements Comparable<Link> {
 		return this;
 	}
 
-	public String getHref() {
+	public Object getHref() {
 		return href;
 	}
 
-	public Link setHref(String href) {
+	public Link setHref(Object href) {
 		this.href = href;
 		return this;
 	}
